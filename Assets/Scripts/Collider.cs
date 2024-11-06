@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class Collider : MonoBehaviour
 {
-    public GameObject obj;
-
-    float minX, minY, minZ, maxX, maxY, maxZ;
+    private Collider[] colliders;
+    [HideInInspector] public bool isCollide;
 
     private void Start()
     {
-        AABB();
+        colliders = FindObjectsOfType<Collider>();
     }
 
     private void FixedUpdate()
     {
-        CheckXYZ();
+        foreach (var collider in colliders)
+        {
+            if(collider.enabled && collider != this) 
+                AABB(collider.gameObject.transform);
+        }
     }
 
-    private void AABB()
+    private bool AABB(Transform obj)
     {
-        minX = obj.transform.position.x - (obj.transform.localScale.x / 2);
-        maxX = obj.transform.position.x + (obj.transform.localScale.x / 2);
+        float minX = obj.transform.position.x - (obj.transform.localScale.x / 2);
+        float maxX = obj.transform.position.x + (obj.transform.localScale.x / 2);
 
-        minY = obj.transform.position.y - (obj.transform.localScale.y / 2);
-        maxY = obj.transform.position.y + (obj.transform.localScale.y / 2);
+        float minY = obj.transform.position.y - (obj.transform.localScale.y / 2);
+        float maxY = obj.transform.position.y + (obj.transform.localScale.y / 2);
 
-        minZ = obj.transform.position.z - (obj.transform.localScale.z / 2);
-        maxZ = obj.transform.position.z + (obj.transform.localScale.z / 2);
-    }
-
-    private void CheckXYZ()
-    {
+        float minZ = obj.transform.position.z - (obj.transform.localScale.z / 2);
+        float maxZ = obj.transform.position.z + (obj.transform.localScale.z / 2);
+        
         float px = transform.position.x;
         float py = transform.position.y;
         float pz = transform.position.z;
@@ -51,6 +51,15 @@ public class Collider : MonoBehaviour
         if (Mx >= minX && mx <= maxX &&
             My >= minY && my <= maxY &&
             Mz >= minZ && mz <= maxZ)
-            Debug.Log("Crush");
+            isCollide = true;
+        else
+            isCollide = false;
+
+        return isCollide;
+    }
+
+    public bool GetCollide()
+    {
+        return isCollide;
     }
 }
