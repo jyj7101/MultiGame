@@ -7,9 +7,9 @@ public class PlayerAttack : MonoBehaviour
 {
     public GameObject bullet;
 
-
-    public void OnMouseInput()
+    public void OnShoot(InputAction.CallbackContext context)
     {
-        Instantiate(bullet, transform.position, Quaternion.identity);    
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+            Instantiate(bullet, transform.position, Quaternion.identity);
     }
 }
