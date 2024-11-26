@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644e1b097e43f2f4db0e68a4abe68e8c, type: 3}
-  m_Name: PlayerMoveData
+  m_Script: {fileID: 11500000, guid: 3da64097e0ba1244592d67a5774b99bf, type: 3}
+  m_Name: Damage
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  rorationSpeed: 10
+  WeaponKind: 0

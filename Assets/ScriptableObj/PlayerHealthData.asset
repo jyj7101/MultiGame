@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644e1b097e43f2f4db0e68a4abe68e8c, type: 3}
-  m_Name: PlayerMoveData
+  m_Script: {fileID: 11500000, guid: 68a3f107264593a4d999b633f053aafc, type: 3}
+  m_Name: PlayerHealthData
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  rorationSpeed: 10
+  maxHp: 10
+  defence: 2

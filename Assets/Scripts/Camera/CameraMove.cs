@@ -15,6 +15,7 @@ public class CameraMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, playerMove.transform.position + offset, damping * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, playerMove.transform.position + offset + (MousePos.Instance.transform.position / 5), damping * Time.deltaTime);
+        //transform.position = Vector3.Lerp(transform.position, playerMove.transform.position + offset + (MousePos.Instance.transform.position / 5), 1);
     }
 }

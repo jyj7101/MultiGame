@@ -1,35 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMove : MonoBehaviour
+public class PlayerMove : MonoSingleton<PlayerMove>
 {
-    private static PlayerMove instance;
-    public static PlayerMove Instance
-    {
-        get
-        {
-            if (null == instance)
-                return null;
-            return instance;
-        }
-    }
-
-
     [SerializeField] private PlayerMoveData data;
     private Vector3 Direction;
 
-    private void Awake()
-    {
-        if (null == instance)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
 
     private void FixedUpdate()
     {
@@ -44,13 +20,15 @@ public class PlayerMove : MonoBehaviour
 
     private void LookAt()
     {
-        if (Direction != Vector3.zero)
-        {
-            var currentAngle = transform.rotation;
-            var targetAngle = Quaternion.LookRotation(Direction);
+        //if (Direction != Vector3.zero)
+        //{
+        //    var currentAngle = transform.rotation;
+        //    var targetAngle = Quaternion.LookRotation(Direction);
 
-            transform.rotation = Quaternion.Lerp(currentAngle, targetAngle, Time.deltaTime * data.rorationSpeed);
-        }
+        //    transform.rotation = Quaternion.Lerp(currentAngle, targetAngle, Time.deltaTime * data.rorationSpeed);
+        //}
+        transform.LookAt(MousePos.Instance.transform.position);
+
     }
 
     public void OnMoveInput(InputAction.CallbackContext context)

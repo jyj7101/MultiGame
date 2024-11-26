@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 644e1b097e43f2f4db0e68a4abe68e8c, type: 3}
-  m_Name: PlayerMoveData
+  m_Script: {fileID: 11500000, guid: f2a7e9ad9af0a164eb410eed274024cb, type: 3}
+  m_Name: BasicWeaponData
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
-  rorationSpeed: 10
+  bulletSpeed: 2
+  destroyTime: 0.4
+  coolTime: 0.3

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MousePos : MonoBehaviour
+public class MousePos : MonoSingleton<MousePos>
 {
     private Ray ray; 
     private Vector3 worldPos;
