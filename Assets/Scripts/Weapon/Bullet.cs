@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicWeapon : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    public float Damage;
     private Vector3 dir;
     [SerializeField] private BasicWeaponData data;
-
 
     void Start()
     {

@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 3695819750771789631}
   - component: {fileID: 1859370602437637643}
   - component: {fileID: 5346426536210556181}
+  - component: {fileID: -1514475805283896189}
   m_Layer: 0
   m_Name: BasicBullet
-  m_TagString: Untagged
+  m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +101,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -118,4 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 302c277227c2f9a42a47c40b12c5fa63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 0
   data: {fileID: 11400000, guid: b736aef1d722c7342a41084585236aa2, type: 2}
+--- !u!114 &-1514475805283896189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4940807709614307821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 878a55ac6d79c0548b28736f7f0002bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 4

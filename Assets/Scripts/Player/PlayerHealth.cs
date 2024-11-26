@@ -26,7 +26,6 @@ public class PlayerHealth : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Attack"))
         {
-            Debug.Log("damage");
             if(other.GetComponent<Damaging>() != null)
                 Damaged(other.GetComponent<Damaging>().damage);
         }
