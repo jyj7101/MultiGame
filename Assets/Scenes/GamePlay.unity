@@ -493,9 +493,37 @@ MonoBehaviour:
     m_ActionId: 4c486e82-3e4a-4d79-9f03-d45adae114fe
     m_ActionName: Player/Mouse[/Mouse/leftButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 369610822}
+        m_TargetAssemblyTypeName: BasicSkill, Assembly-CSharp
+        m_MethodName: OnDashSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d7c003b7-99ea-4a2c-8080-0c7997e94128
     m_ActionName: Player/Skill[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 369610822}
+        m_TargetAssemblyTypeName: BasicSkill, Assembly-CSharp
+        m_MethodName: OnHealSkill
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ae7462ad-3be9-43c1-9395-160d5946c8b5
+    m_ActionName: Player/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Player
@@ -649,8 +677,10 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  dashTime: 1
-  dashAmount: 3
+  dashTime: 0.2
+  dashAmount: 1
+  dashCoolTime: 1
+  healAmount: 10
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

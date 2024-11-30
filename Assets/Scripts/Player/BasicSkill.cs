@@ -5,15 +5,17 @@ using UnityEngine;
 public class BasicSkill : MonoBehaviour
 {
     private PlayerMove playerMove;
+    private PlayerHealth playerHealth;
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private float dashTime;
     [SerializeField] private float dashAmount;
     [SerializeField] private float dashCoolTime;
-
+    [SerializeField] private float healAmount;
     private IEnumerator co;
     private void Start()
     {
         playerMove = GetComponent<PlayerMove>();
+        playerHealth = GetComponent<PlayerHealth>();
     }
 
     private void FixedUpdate()
@@ -57,6 +59,7 @@ public class BasicSkill : MonoBehaviour
 
     public void OnHealSkill()
     {
-
+        Debug.Log("asdf");
+        playerHealth.CurrentHp += healAmount;
     }
 }

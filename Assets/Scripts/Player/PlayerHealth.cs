@@ -5,8 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
-    private float currentHp;
     private float healthPercent;
+    private float currentHp;
+    public float CurrentHp 
+    {
+        get { return currentHp; } 
+        set 
+        {
+            if (value + currentHp >= data.maxHp)
+                currentHp = data.maxHp;
+            else
+                currentHp += value;
+        } 
+    }
     [SerializeField] private Image hpFill;
     [SerializeField] private PlayerHealthData data;
 
@@ -31,16 +42,16 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Damaged(float damage)
+    public void Damaged(float trueDamage)
     {
-        float cal = damage - data.defence;
-        if (cal < 0)
+        float damage = trueDamage - data.defence;
+        if (damage < 0)
         {
             return;
         }
-        else if (currentHp > cal)
+        else if (currentHp >= damage)
         {
-            currentHp -= cal;
+            currentHp -= damage;
         }
         else
         {

@@ -24,13 +24,22 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Skill",
+                    "name": "Dash",
                     "type": "Button",
                     "id": "d7c003b7-99ea-4a2c-8080-0c7997e94128",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Heal",
+                    "type": "Button",
+                    "id": "ae7462ad-3be9-43c1-9395-160d5946c8b5",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -151,18 +160,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1cfa0ffe-91a3-42c3-8528-cdceacf3f2a1",
+                    "id": "492b925c-e283-4139-b2e1-00caf0020718",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Skill",
+                    "action": "Heal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
