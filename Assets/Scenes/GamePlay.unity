@@ -408,6 +408,7 @@ GameObject:
   - component: {fileID: 369610817}
   - component: {fileID: 369610819}
   - component: {fileID: 369610820}
+  - component: {fileID: 369610822}
   - component: {fileID: 369610821}
   - component: {fileID: 369610818}
   m_Layer: 0
@@ -491,6 +492,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 4c486e82-3e4a-4d79-9f03-d45adae114fe
     m_ActionName: Player/Mouse[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d7c003b7-99ea-4a2c-8080-0c7997e94128
+    m_ActionName: Player/Skill[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: PC
   m_DefaultActionMap: Player
@@ -509,6 +514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 2d11538b719f28c4c9126b54a521229c, type: 2}
+  canMove: 0
 --- !u!114 &369610817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,6 +604,53 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &369610822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369610812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc2ce699451307e41bf33dd7901036d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0033416748
+      inSlope: 3.8764226
+      outSlope: 3.8764226
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.06741096
+    - serializedVersion: 3
+      time: 0.50462765
+      value: 0.9963454
+      inSlope: -0.01968585
+      outSlope: -0.01968585
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.0033416748
+      inSlope: -4.259374
+      outSlope: -4.259374
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.092018634
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dashTime: 1
+  dashAmount: 3
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

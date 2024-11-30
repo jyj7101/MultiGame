@@ -4,8 +4,16 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoSingleton<PlayerMove>
 {
     [SerializeField] private PlayerMoveData data;
-    private Vector3 Direction;
+    private Vector3 direction;
+    public bool canMove; // need hide
 
+    public Vector3 Direction { get; private set;  }
+
+    private void Update()
+    {
+        Direction = direction;
+        canMove = true;
+    }
 
     private void FixedUpdate()
     {
@@ -14,8 +22,10 @@ public class PlayerMove : MonoSingleton<PlayerMove>
 
     private void Move()
     {
+        if (!canMove)
+            return;
         LookAt();
-        transform.position += Direction * data.moveSpeed;
+        transform.position += direction * data.moveSpeed;
     }
 
     private void LookAt()
@@ -34,6 +44,6 @@ public class PlayerMove : MonoSingleton<PlayerMove>
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         var input = context.ReadValue<Vector2>();
-        Direction = new Vector3(input.x, 0f, input.y);
+        direction = new Vector3(input.x, 0f, input.y);
     }
 }
