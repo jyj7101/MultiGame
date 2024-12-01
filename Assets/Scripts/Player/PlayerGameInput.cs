@@ -7,16 +7,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerGameInput : MonoBehaviour
 {
-    private PlayerHealth playerHealth;
     private BasicSkill skill;
     private PlayerMove playerMove;
     private PlayerAttack playerAttack;
 
     public IEnumerator co;
 
-    private void Start()
+    private void Awake()
     {
-        playerHealth = GetComponent<PlayerHealth>();
         skill = GetComponent<BasicSkill>();
         playerMove = GetComponent<PlayerMove>();
         playerAttack = GetComponent<PlayerAttack>();
@@ -40,7 +38,7 @@ public class PlayerGameInput : MonoBehaviour
     public void OnHealSkill(InputAction.CallbackContext context)
     {
         if(context.performed) 
-            playerHealth.Heal(3);
+            skill.StartHeal();
     }
 
     public void OnShoot(InputAction.CallbackContext context)

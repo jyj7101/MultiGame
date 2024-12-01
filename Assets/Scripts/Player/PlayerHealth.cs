@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Subject
 {
-    private float healthPercent;
+    private UIController _uiController;
     private float currentHp;
     public float CurrentHp 
     {
@@ -18,20 +17,32 @@ public class PlayerHealth : MonoBehaviour
                 currentHp += value;
         } 
     }
-    [SerializeField] private Image hpFill;
+    [HideInInspector] public float MaxHp { get; private set; }
     [SerializeField] private PlayerHealthData data;
+
+    private void Awake()
+    {
+        _uiController = FindObjectOfType<UIController>().GetComponent<UIController>();
+        currentHp = data.maxHp;
+        MaxHp = data.maxHp;
+    }
 
     private void Start()
     {
-        currentHp = data.maxHp;
+        NotifyObservers();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        healthPercent = currentHp / data.maxHp;
-        hpFill.fillAmount = healthPercent;
+        if (_uiController)
+            Attach(_uiController);
     }
 
+    private void OnDisable()
+    {
+        if (_uiController)
+            Detach(_uiController);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,24 +57,22 @@ public class PlayerHealth : MonoBehaviour
     {
         float damage = trueDamage - data.defence;
         if (damage < 0)
-        {
             return;
-        }
         else if (currentHp >= damage)
-        {
             currentHp -= damage;
-        }
-        else
-        {
+        
+        NotifyObservers();
+
+        if (currentHp <= 0)
             PlayerDie();
-        }
+        
     }
 
     public void Heal(float healAmount)
     {
         CurrentHp += healAmount;
+        NotifyObservers();
     }
-
 
     public bool PlayerDie()
     {

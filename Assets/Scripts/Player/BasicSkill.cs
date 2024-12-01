@@ -2,35 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicSkill : MonoBehaviour
+public class BasicSkill : Subject
 {
     private PlayerMove playerMove;
     private PlayerHealth playerHealth;
+    private UIController _uiController;
+
     [SerializeField] private AnimationCurve curve;
     [SerializeField] private float dashTime;
     [SerializeField] private float dashAmount;
     [SerializeField] private float dashCoolTime;
+    public float DashTimer { get; private set; }
+
+    [SerializeField] private float healCoolTime;
     [SerializeField] private float healAmount;
-    private IEnumerator co;
-    private void Start()
+    public float HealTimer { get; private set; }
+
+    private void Awake()
     {
+        _uiController = FindObjectOfType<UIController>().GetComponent<UIController>();
         playerMove = GetComponent<PlayerMove>();
         playerHealth = GetComponent<PlayerHealth>();
     }
 
-    private void FixedUpdate()
+    private void Start()
     {
-        
+        DashTimer = HealTimer = 1;
+        NotifyObservers();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        
+        if (_uiController)
+            Attach(_uiController);
     }
 
+    private void OnDisable()
+    {
+        if (_uiController)
+            Detach(_uiController);
+    }
+
+    private IEnumerator dco;
     private IEnumerator Dash()
     {
-        co = Dash();
+        dco = Dash();
         playerMove.canMove = false;
         float runTime = 0;
         while (runTime < dashTime) {
@@ -43,17 +59,42 @@ public class BasicSkill : MonoBehaviour
         while (runTime < dashCoolTime)
         {
             runTime += Time.deltaTime;
+            DashTimer = runTime / dashCoolTime;
+            NotifyObservers();
             yield return new WaitForFixedUpdate();
         }
+        DashTimer = 1;
+        NotifyObservers();
+        dco = null;
+    }
 
-        co = null;
+    private IEnumerator hco;
+    private IEnumerator Heal()
+    {
+        hco = Heal();
+        float runTime = 0;
+        playerHealth.Heal(healAmount);
+        while (runTime < healCoolTime)
+        {
+            runTime += Time.deltaTime;
+            HealTimer = runTime / healCoolTime;
+            NotifyObservers();
+            yield return new WaitForFixedUpdate();
+        }
+        HealTimer = 1;
+        NotifyObservers();
+        hco = null;
     }
 
     public void StartDash()
     {
-        if (co == null)
-        {
+        if (dco == null)
             StartCoroutine(Dash());
-        }
+    }
+
+    public void StartHeal()
+    {
+        if (hco == null)
+            StartCoroutine(Heal());
     }
 }
