@@ -34,32 +34,26 @@ public class BasicSkill : MonoBehaviour
         playerMove.canMove = false;
         float runTime = 0;
         while (runTime < dashTime) {
-            transform.position += playerMove.Direction * curve.Evaluate(runTime / dashTime) * dashAmount;
+            transform.position += curve.Evaluate(runTime / dashTime) * dashAmount * playerMove.Direction;
             runTime += Time.deltaTime;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
         playerMove.canMove = true;
         runTime = 0;
         while (runTime < dashCoolTime)
         {
             runTime += Time.deltaTime;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
 
         co = null;
     }
 
-    public void OnDashSkill()
+    public void StartDash()
     {
-        if(co == null)
+        if (co == null)
+        {
             StartCoroutine(Dash());
-
-
-    }
-
-    public void OnHealSkill()
-    {
-        Debug.Log("asdf");
-        playerHealth.CurrentHp += healAmount;
+        }
     }
 }

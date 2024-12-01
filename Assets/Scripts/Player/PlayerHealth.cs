@@ -59,6 +59,11 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+    public void Heal(float healAmount)
+    {
+        CurrentHp += healAmount;
+    }
+
 
     public bool PlayerDie()
     {

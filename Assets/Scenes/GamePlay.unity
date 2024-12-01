@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 356311041}
   - component: {fileID: 356311045}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: RedZone
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 369610822}
   - component: {fileID: 369610821}
   - component: {fileID: 369610818}
+  - component: {fileID: 369610823}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -462,8 +463,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369610816}
-        m_TargetAssemblyTypeName: PlayerMove, Assembly-CSharp
+      - m_Target: {fileID: 369610823}
+        m_TargetAssemblyTypeName: PlayerGameInput, Assembly-CSharp
         m_MethodName: OnMoveInput
         m_Mode: 0
         m_Arguments:
@@ -478,8 +479,8 @@ MonoBehaviour:
     m_ActionName: Move/Move[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369610819}
-        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+      - m_Target: {fileID: 369610823}
+        m_TargetAssemblyTypeName: PlayerGameInput, Assembly-CSharp
         m_MethodName: OnShoot
         m_Mode: 0
         m_Arguments:
@@ -494,10 +495,10 @@ MonoBehaviour:
     m_ActionName: Player/Mouse[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369610822}
-        m_TargetAssemblyTypeName: BasicSkill, Assembly-CSharp
+      - m_Target: {fileID: 369610823}
+        m_TargetAssemblyTypeName: PlayerGameInput, Assembly-CSharp
         m_MethodName: OnDashSkill
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -510,10 +511,10 @@ MonoBehaviour:
     m_ActionName: Player/Skill[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 369610822}
-        m_TargetAssemblyTypeName: BasicSkill, Assembly-CSharp
+      - m_Target: {fileID: 369610823}
+        m_TargetAssemblyTypeName: PlayerGameInput, Assembly-CSharp
         m_MethodName: OnHealSkill
-        m_Mode: 1
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -681,6 +682,18 @@ MonoBehaviour:
   dashAmount: 1
   dashCoolTime: 1
   healAmount: 10
+--- !u!114 &369610823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369610812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2549f03b06f20d0429798d6715be815d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,7 +1235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 33694ea51f6b9764da24eb36cd0677cb, type: 2}
+  - {fileID: 2100000, guid: e40b5a14f27ddfa43a4f2b62521e4ceb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -9,41 +9,26 @@ public class PlayerMove : MonoSingleton<PlayerMove>
 
     public Vector3 Direction { get; private set;  }
 
+    public void SetDirection(Vector3 dir) => Direction = dir;
+
+    private void Start() => canMove = true;
+
+
     private void Update()
     {
-        Direction = direction;
-        canMove = true;
+        direction = Direction;
     }
 
     private void FixedUpdate()
     {
         Move();
+        transform.LookAt(MousePos.Instance.transform.position);
     }
 
     private void Move()
     {
         if (!canMove)
             return;
-        LookAt();
         transform.position += direction * data.moveSpeed;
-    }
-
-    private void LookAt()
-    {
-        //if (Direction != Vector3.zero)
-        //{
-        //    var currentAngle = transform.rotation;
-        //    var targetAngle = Quaternion.LookRotation(Direction);
-
-        //    transform.rotation = Quaternion.Lerp(currentAngle, targetAngle, Time.deltaTime * data.rorationSpeed);
-        //}
-        transform.LookAt(MousePos.Instance.transform.position);
-
-    }
-
-    public void OnMoveInput(InputAction.CallbackContext context)
-    {
-        var input = context.ReadValue<Vector2>();
-        direction = new Vector3(input.x, 0f, input.y);
     }
 }
