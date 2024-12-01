@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPhysics : MonoBehaviour
 {
     public float gravity = .1f;
-    [SerializeField] private bool isGravity;
+    private bool isGravity;
 
     private void Start()
     {

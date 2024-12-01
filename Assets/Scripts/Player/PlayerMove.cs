@@ -5,7 +5,7 @@ public class PlayerMove : MonoSingleton<PlayerMove>
 {
     [SerializeField] private PlayerMoveData data;
     private Vector3 direction;
-    public bool canMove; // need hide
+    [HideInInspector] public bool canMove;
 
     public Vector3 Direction { get; private set;  }
 
