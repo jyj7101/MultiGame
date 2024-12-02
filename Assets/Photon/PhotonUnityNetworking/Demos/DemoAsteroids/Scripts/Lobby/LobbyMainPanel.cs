@@ -36,6 +36,9 @@ namespace Photon.Pun.Demo.Asteroids
 
         public Button StartGameButton;
         public GameObject PlayerListEntryPrefab;
+        [Header("Chatting panel")]
+        public GameObject ChattingPanel;
+
 
         private Dictionary<string, RoomInfo> cachedRoomList;
         private Dictionary<string, GameObject> roomListEntries;
@@ -108,9 +111,8 @@ namespace Photon.Pun.Demo.Asteroids
             // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
             cachedRoomList.Clear();
 
-
             SetActivePanel(InsideRoomPanel.name);
-
+            ChattingPanel.SetActive(true);
             if (playerListEntries == null)
             {
                 playerListEntries = new Dictionary<int, GameObject>();
@@ -325,6 +327,7 @@ namespace Photon.Pun.Demo.Asteroids
             CreateRoomPanel.SetActive(activePanel.Equals(CreateRoomPanel.name));
             RoomListPanel.SetActive(activePanel.Equals(RoomListPanel.name));    // UI should call OnRoomListButtonClicked() to activate this
             InsideRoomPanel.SetActive(activePanel.Equals(InsideRoomPanel.name));
+            ChattingPanel.SetActive(activePanel.Equals(ChattingPanel.name));
         }
 
         private void UpdateCachedRoomList(List<RoomInfo> roomList)
