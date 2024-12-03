@@ -97,15 +97,6 @@ namespace Photon.Pun.Demo.Asteroids
             SetActivePanel(SelectionPanel.name);
         }
 
-        public override void OnJoinRandomFailed(short returnCode, string message)
-        {
-            string roomName = "Room " + Random.Range(1000, 10000);
-
-            RoomOptions options = new RoomOptions {MaxPlayers = 8};
-
-            PhotonNetwork.CreateRoom(roomName, options, null);
-        }
-
         public override void OnJoinedRoom()
         {
             // joining (or entering) a room invalidates any cached lobby room list (even if LeaveLobby was not called due to just joining a room)
@@ -327,7 +318,6 @@ namespace Photon.Pun.Demo.Asteroids
             CreateRoomPanel.SetActive(activePanel.Equals(CreateRoomPanel.name));
             RoomListPanel.SetActive(activePanel.Equals(RoomListPanel.name));    // UI should call OnRoomListButtonClicked() to activate this
             InsideRoomPanel.SetActive(activePanel.Equals(InsideRoomPanel.name));
-            ChattingPanel.SetActive(activePanel.Equals(ChattingPanel.name));
         }
 
         private void UpdateCachedRoomList(List<RoomInfo> roomList)

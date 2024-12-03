@@ -6089,7 +6089,6 @@ MonoBehaviour:
   sendBtn: {fileID: 1356611607}
   chatLog: {fileID: 138051877}
   inputField: {fileID: 746993837}
-  playerList: {fileID: 0}
 --- !u!114 &1792713575
 MonoBehaviour:
   m_ObjectHideFlags: 0

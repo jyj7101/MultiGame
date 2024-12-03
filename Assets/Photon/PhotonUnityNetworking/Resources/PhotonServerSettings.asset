@@ -19,7 +19,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: 
+    FixedRegion: hk
     Server: 
     Port: 0
     ProxyServer: 
@@ -42,5 +42,5 @@ MonoBehaviour:
   - OnGameRoom
   - ReceiveMsg
   DisableAutoOpenWizard: 1
-  ShowSettings: 0
+  ShowSettings: 1
   DevRegionSetOnce: 1
